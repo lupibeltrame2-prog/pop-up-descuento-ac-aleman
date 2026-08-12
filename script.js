@@ -1,12 +1,11 @@
 // Reconstruct background image from chunks and set as inline style
 document.addEventListener('DOMContentLoaded', () => {
   const bgContainer = document.querySelector('.bg-container');
-  if (bgContainer && window.bgChunk0) {
-    const fullB64 = (window.bgChunk0 || '') +
-                    (window.bgChunk1 || '') +
-                    (window.bgChunk2 || '') +
-                    (window.bgChunk3 || '') +
-                    (window.bgChunk4 || '');
+  if (bgContainer && window.bgPart0) {
+    let fullB64 = '';
+    for (let i = 0; i < 9; i++) {
+      fullB64 += (window['bgPart' + i] || '');
+    }
     bgContainer.style.backgroundImage = `url('data:image/jpeg;base64,${fullB64}')`;
   }
 });
