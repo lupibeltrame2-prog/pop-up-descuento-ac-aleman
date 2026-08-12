@@ -1,3 +1,16 @@
+// Reconstruct background image from chunks and set as inline style
+document.addEventListener('DOMContentLoaded', () => {
+  const bgContainer = document.querySelector('.bg-container');
+  if (bgContainer && window.bgChunk0) {
+    const fullB64 = (window.bgChunk0 || '') +
+                    (window.bgChunk1 || '') +
+                    (window.bgChunk2 || '') +
+                    (window.bgChunk3 || '') +
+                    (window.bgChunk4 || '');
+    bgContainer.style.backgroundImage = `url('data:image/jpeg;base64,${fullB64}')`;
+  }
+});
+
 // Countdown Timer Logic (09:59)
 document.addEventListener('DOMContentLoaded', () => {
   let totalSeconds = 9 * 60 + 59; // 09 minutes and 59 seconds
